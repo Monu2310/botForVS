@@ -1,0 +1,103 @@
+{
+  "name": "ai-chat-assistant",
+  "displayName": "AI Chat Assistant (Groq)",
+  "description": "VS Code extension with React-based chat interface for AI code assistance using Groq's fast and free API",
+  "version": "0.0.1",
+  "publisher": "local-dev",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "ai-chat-assistant.openChat",
+        "title": "Open AI Chat",
+        "category": "AI Chat"
+      },
+      {
+        "command": "ai-chat-assistant.ultraSimpleChat",
+        "title": "🆘 Ultra Simple Working Chat",
+        "category": "AI Chat"
+      },
+      {
+        "command": "ai-chat-assistant.configureApiKey",
+        "title": "Configure Groq API Key",
+        "category": "AI Chat"
+      },
+      {
+        "command": "ai-chat-assistant.selectModel",
+        "title": "Select Groq Model",
+        "category": "AI Chat"
+      }
+    ],
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "ai-chat-assistant.openChat",
+          "title": "AI Chat: Open Chat"
+        },
+        {
+          "command": "ai-chat-assistant.ultraSimpleChat",
+          "title": "AI Chat: 🆘 Ultra Simple Working Chat"
+        },
+        {
+          "command": "ai-chat-assistant.configureApiKey",
+          "title": "AI Chat: Configure Groq API Key"
+        },
+        {
+          "command": "ai-chat-assistant.selectModel",
+          "title": "AI Chat: Select Groq Model"
+        }
+      ],
+      "view/title": [
+        {
+          "command": "ai-chat-assistant.openChat",
+          "when": "view == explorer",
+          "group": "navigation"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/node": "20.x",
+    "@types/vscode": "^1.101.0",
+    "@typescript-eslint/eslint-plugin": "^8.31.1",
+    "@typescript-eslint/parser": "^8.31.1",
+    "css-loader": "^7.1.2",
+    "eslint": "^9.25.1",
+    "style-loader": "^4.0.0",
+    "ts-loader": "^9.5.2",
+    "typescript": "^5.8.3",
+    "webpack": "^5.99.7",
+    "webpack-cli": "^6.0.1"
+  },
+  "dependencies": {
+    "@types/highlight.js": "^9.12.4",
+    "@types/marked": "^5.0.2",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "groq-sdk": "^0.25.0",
+    "highlight.js": "^11.11.1",
+    "marked": "^15.0.12",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  }
+}
